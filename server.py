@@ -1,6 +1,7 @@
 import asyncio
 import random
 
+"""Серверная часть использовалась исключительно для тестов"""
 
 async def handle_echo(reader, writer):
     cnt = 0
