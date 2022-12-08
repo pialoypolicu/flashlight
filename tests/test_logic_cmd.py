@@ -1,7 +1,7 @@
 import ast
 import json
 from json import JSONDecodeError
-
+from variables import HOST, PORT
 import pytest
 
 from flashlight_control import make_command
@@ -21,23 +21,23 @@ def anyio_backend():
     (True, {"command": "off", "metadata": "green"}),
     (None, {"command": "offf", "metadata": "green"}),
     (True, {"command": "coLor", "metadata": "green"}),
+    (None, {"command": "new_cmd", "metadata": "green"})
 ])
-@pytest.mark.anyio
-async def test_base_command(expected, command):
+def test_make_command(expected, command):
     """
     тестируем выполнение комманд
     """
-    result = await make_command(command)
+    result = make_command(command)
     assert expected == result
 
 
 @pytest.mark.anyio
-async def test_connection(mock_connection, mock_read):
-    reader, writer = await create_connection("127.0.0.1", 9999)
+async def test_connection(mock_connection, mock_reader):
+    reader, writer = await create_connection(HOST, PORT)
     data = await reader.read(100)
     try:
         data = json.loads(data)
     except JSONDecodeError:
         data = ast.literal_eval(data.decode("UTF-8"))
     with pytest.raises(ValidationError):
-        await is_valid(data)
+        is_valid(data)

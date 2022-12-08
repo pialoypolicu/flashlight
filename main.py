@@ -1,5 +1,5 @@
-import ast
 import asyncio
+from variables import HOST, PORT
 import json
 from asyncio import StreamReader, StreamWriter
 from json.decoder import JSONDecodeError
@@ -22,15 +22,15 @@ async def create_connection(host: str, port: int) -> tuple[StreamReader, StreamW
 
 async def main_client(message: str) -> None:
     logger.info(message)
-    reader, writer = await create_connection("127.0.0.1", 9999)
+    reader, writer = await create_connection(HOST, PORT)
     data = await reader.read(100)
+    writer.close()
     try:
         data = json.loads(data)
-    except JSONDecodeError:
-        data = ast.literal_eval(data.decode("UTF-8"))
-    writer.close()
-    await is_valid(data)
-    await make_command(data)
+    except JSONDecodeError as error:
+        logger.error(f"json parse error {error}")
+    is_valid(data)
+    make_command(data)
 
 
 if __name__ == '__main__':
