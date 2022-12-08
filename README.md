@@ -32,7 +32,7 @@ loguru
 
 #### Альтернатиный вариант запуска скрипта docker image
 для запуска при помощи технологии docker достаточно выполнить команду в терминаде
-> `docker run backpydev/flashlight:0.0.1`
+> `docker run backpydev/flashlight:0.0.2`
 
 #### tests
 Для запуска тестов выполните команду 
