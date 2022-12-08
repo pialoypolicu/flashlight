@@ -1,4 +1,5 @@
 import enum
+
 from loguru import logger
 
 

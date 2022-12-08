@@ -1,6 +1,7 @@
 import asyncio
 import json
 import random
+
 from variables import HOST, PORT
 
 """Серверная часть использовалась исключительно для тестов"""

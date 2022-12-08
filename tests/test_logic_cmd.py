@@ -1,13 +1,14 @@
 import ast
 import json
 from json import JSONDecodeError
-from variables import HOST, PORT
+
 import pytest
 
 from flashlight_control import make_command
 from main import create_connection
 from my_exceptions import ValidationError
 from validators import is_valid
+from variables import HOST, PORT
 
 
 @pytest.fixture

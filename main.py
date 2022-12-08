@@ -1,5 +1,4 @@
 import asyncio
-from variables import HOST, PORT
 import json
 from asyncio import StreamReader, StreamWriter
 from json.decoder import JSONDecodeError
@@ -8,6 +7,7 @@ from loguru import logger
 
 from flashlight_control import make_command
 from validators import is_valid
+from variables import HOST, PORT
 
 
 async def create_connection(host: str, port: int) -> tuple[StreamReader, StreamWriter]:
