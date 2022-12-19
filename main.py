@@ -1,4 +1,7 @@
+# В задачке указаны варианты:
+# 3. Реализация сетевого протокола может быть на aiohttp, tornado или fastAPI.
 import asyncio
+# Переделайте, пожалуйста, используя fastAPI
 import json
 from asyncio import StreamReader, StreamWriter
 from json.decoder import JSONDecodeError
