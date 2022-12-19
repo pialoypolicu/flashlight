@@ -7,6 +7,8 @@ from variables import HOST, PORT
 """Серверная часть использовалась исключительно для тестов"""
 
 async def handle_echo(reader, writer):
+    # по аналогии и здесь, и в питесте - все команды, параметры и пр. берется из одной
+    # и той же разделяемой сущности - общего словаря
     commands = ['ON', 'OFF', "COLOR"]
     command = random.choice(commands)
     metadata = ["white", "green", "red", None]
