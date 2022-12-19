@@ -9,7 +9,10 @@ class ControlCommands(enum.Enum):
     on = 1
     color = 2
 
-
+# А если мы добавим, скажем, еще 10 комманд - яркость, режим "стробоскопа"/обычный, 
+# переключение на ультрафиолет/лампочку,и т.д. и т.п.
+# будет также куча захардкоренных элементов, тем более "ифов"
+# Исправьте на использование словаря, пожалуйста
 def make_command(data) -> bool | None:
     command = data["command"].lower()
     if not hasattr(ControlCommands, command):
